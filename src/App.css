@@ -3,27 +3,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
+  margin-top: 3rem;
 }
 
-
 .header {
-  margin: 1rem;
+  background-color: orange;
+  padding: 1rem 21rem;
+  border-radius: 5px;
 }
 
 p {
-  margin: 1rem;
+  margin-bottom: 1rem;
   font-weight: 600;
   font-size: 1.5rem;
+  text-align: center;
 
-}
-
-.inputText { 
-  margin-right: 1rem;
 }
 
 .stats {
   margin-bottom: 1rem;
   padding: 2rem;
-  border: 1px solid black;
 }
