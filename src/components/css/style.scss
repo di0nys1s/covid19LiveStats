@@ -12,23 +12,31 @@ body {
             text-align: center;
         }
 
-        .stats {}
-
-        .general-stats {
+        .stats {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: flex-start;
             margin-top: 10rem;
-            border: 1px solid red;
             margin: 1rem 0;
             background-color: #eee;
             border-radius: 5px;
+            padding: .5rem;
+
+            .country-stats {
+                display: flex;
+                margin: 0 2rem;
+                align-items: center;
+                justify-content: space-evenly;
+                flex-grow: 10;
+
+            }
 
             p {
                 color: black;
                 font-weight: 500;
                 vertical-align: middle;
-                margin: .5rem 0;
+                margin: .5rem 2rem;
                 font-size: 1.2rem;
+
             }
 
         }

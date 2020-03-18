@@ -11,20 +11,27 @@ body .container .header {
   border-radius: 5px;
   text-align: center;
 }
-body .container .general-stats {
+body .container .stats {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   margin-top: 10rem;
-  border: 1px solid red;
   margin: 1rem 0;
   background-color: #eee;
   border-radius: 5px;
+  padding: 0.5rem;
 }
-body .container .general-stats p {
+body .container .stats .country-stats {
+  display: flex;
+  margin: 0 2rem;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-grow: 10;
+}
+body .container .stats p {
   color: black;
   font-weight: 500;
   vertical-align: middle;
-  margin: 0.5rem 0;
+  margin: 0.5rem 2rem;
   font-size: 1.2rem;
 }
 body .container .stats-table nav {

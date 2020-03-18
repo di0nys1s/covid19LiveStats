@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "./components/Table";
 import Pages from "./components/Pages";
+import Search from "./components/Search";
 import axios from "axios";
 import "./components/css/style.css";
 
@@ -12,6 +13,14 @@ function App() {
   const [totalConfirmed, setTotalConfirmed] = useState("");
   const [totalDeaths, setTotalDeaths] = useState("");
   const [totalDeathRate, setTotalDeathRate] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResult, setSearchResults] = useState([]);
+
+  const handleChange = event => {
+    event.preventDefault();
+    setSearchTerm(event.target.value);
+    console.log("searchTerm :", searchTerm);
+  };
 
   const percentageCalculator = (x, y) => {
     return ((parseInt(x) * 100) / parseInt(y)).toFixed(2);
@@ -37,11 +46,15 @@ function App() {
         const { lastChecked, covid19Stats } = data;
         console.log("covid19Stats :", covid19Stats);
 
-        let totalDeaths = covid19Stats.reduce((x, y) => {
+        let searchValue = covid19Stats.filter(a =>
+          a.country.includes(searchTerm)
+        );
+
+        let totalDeaths = searchValue.reduce((x, y) => {
           return x + y.deaths;
         }, 0);
 
-        let totalConfirmed = covid19Stats.reduce((x, y) => {
+        let totalConfirmed = searchValue.reduce((x, y) => {
           return x + y.confirmed;
         }, 0);
 
@@ -50,14 +63,20 @@ function App() {
         setTotalDeathRate(percentageCalculator(totalDeaths, totalConfirmed));
 
         console.log("lastChecked :", lastChecked);
-        setData(covid19Stats);
-        setLoading(false);
+
+        if (searchTerm === "") {
+          setData(covid19Stats);
+          setLoading(false);
+        } else {
+          setLoading(false);
+          setData(searchValue);
+        }
       } catch (err) {
         console.log("Error :", err);
       }
     }
     getData();
-  }, []);
+  }, [searchTerm]);
 
   const indexOfLastItem = currentPage * itemPerPage;
   const indexOfFirstItem = indexOfLastItem - itemPerPage;
@@ -70,16 +89,23 @@ function App() {
       <div className="header">
         <h1 className="ui header">Covid19 Statistics</h1>
       </div>
-      <div className="general-stats">
-        <p>
-          Total Confirmed: <span>{totalConfirmed}</span>
-        </p>
-        <p>
-          Total Deaths: <span>{totalDeaths}</span>
-        </p>
-        <p>
-          Death Rate: <span>{totalDeathRate} %</span>
-        </p>
+      <div className="flex-container stats">
+        <Search
+          
+          value={searchTerm}
+          onChange={handleChange}
+        />
+        <div className="country-stats">
+          <p>
+            Total Confirmed: <span>{totalConfirmed}</span>
+          </p>
+          <p>
+            Total Deaths: <span>{totalDeaths}</span>
+          </p>
+          <p>
+            Death Rate: <span>{totalDeathRate} %</span>
+          </p>
+        </div>
       </div>
       <div className="stats-table">
         <Table items={currentItem} loading={loading} />
