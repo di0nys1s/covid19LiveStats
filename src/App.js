@@ -47,7 +47,7 @@ function App() {
         console.log("covid19Stats :", covid19Stats);
 
         let searchValue = covid19Stats.filter(a =>
-          a.country.includes(searchTerm)
+          a.country.toLowerCase().includes(searchTerm)
         );
 
         let totalDeaths = searchValue.reduce((x, y) => {
