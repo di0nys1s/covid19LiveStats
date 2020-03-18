@@ -90,11 +90,7 @@ function App() {
         <h1 className="ui header">Covid19 Statistics</h1>
       </div>
       <div className="flex-container stats">
-        <Search
-          
-          value={searchTerm}
-          onChange={handleChange}
-        />
+        <Search value={searchTerm} onChange={handleChange} />
         <div className="country-stats">
           <p>
             Total Confirmed: <span>{totalConfirmed}</span>
