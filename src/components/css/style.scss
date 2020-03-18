@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    .container {
+        margin: 2rem auto;
+
+        .header {
+            background-color: orange;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .stats {}
+
+        .general-stats {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 10rem;
+            border: 1px solid red;
+            margin: 1rem 0;
+            background-color: #eee;
+            border-radius: 5px;
+
+            p {
+                color: black;
+                font-weight: 500;
+                vertical-align: middle;
+                margin: .5rem 0;
+                font-size: 1.2rem;
+            }
+
+        }
+
+        .stats-table {
+            nav { 
+                margin: 2rem 0;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+
+    }
+}

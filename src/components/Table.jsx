@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = ({ items, loading }) => {
+const Table = ({ items, loading, rate }) => {
   function formatDate(lastDate) {
     let updatedDate = new Date(lastDate);
     let date =
@@ -29,6 +29,10 @@ const Table = ({ items, loading }) => {
     return new Intl.NumberFormat().format(number);
   }
 
+  const percentageCalculator = (x, y) => {
+    return ((parseInt(x) * 100) / parseInt(y)).toFixed(2);
+  };
+
   if (loading) {
     return (
       <div className="ui active inverted dimmer">
@@ -36,31 +40,36 @@ const Table = ({ items, loading }) => {
       </div>
     );
   }
+
   return (
-    <table className="ui celled table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Country</th>
-          <th>Province</th>
-          <th># of Confirmed</th>
-          <th># of Deaths</th>
-          <th>Last Update</th>
-        </tr>
-      </thead>
-      <tbody>
-        {items.map((item, id) => (
-          <tr key={id}>
-            <td>{id + 1}</td>
-            <td>{item.country}</td>
-            <td>{item.province === "" ? "---" : item.province}</td>
-            <td>{formatNumber(item.confirmed)}</td>
-            <td>{formatNumber(item.deaths)}</td>
-            <td>{formatDate(item.lastUpdate)}</td>
+    <div>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Country</th>
+            <th scope="col">Province</th>
+            <th scope="col"># of Confirmed</th>
+            <th scope="col"># of Deaths</th>
+            <th scope="col">Death Rate %</th>
+            <th scope="col">Last Update</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {items.map((item, id) => (
+            <tr key={id}>
+              <td>{id + 1}</td>
+              <td>{item.country}</td>
+              <td>{item.province === "" ? "---" : item.province}</td>
+              <td>{formatNumber(item.confirmed)}</td>
+              <td>{formatNumber(item.deaths)}</td>
+              <td>{percentageCalculator(item.deaths, item.confirmed)} %</td>
+              <td>{formatDate(item.lastUpdate)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
