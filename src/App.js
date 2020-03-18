@@ -65,8 +65,8 @@ function App() {
         console.log("lastChecked :", lastChecked);
 
         if (searchTerm === "") {
-          setData(covid19Stats);
           setLoading(false);
+          setData(covid19Stats);
         } else {
           setLoading(false);
           setData(searchValue);
