@@ -88,8 +88,7 @@ function App() {
     <div>
       <div className="container">
         <Header
-          title="COVID19
-        content"
+          title="COVID19"
           content="If anything kills over 10 million people in the next few decades,
               it's most likely a highly infectious virus rather than a war."
           person="Bill Gates"
