@@ -42,7 +42,7 @@ const Table = ({ items, loading, rate }) => {
   }
 
   return (
-    <div>
+    <div className="table-responsive stats-table">
       <table className="table">
         <thead>
           <tr>

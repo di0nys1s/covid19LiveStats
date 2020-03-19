@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Table from "./components/Table";
 import Pages from "./components/Pages";
-import Search from "./components/Search";
 import axios from "axios";
 import "./components/css/style.css";
 
@@ -14,7 +15,6 @@ function App() {
   const [totalDeaths, setTotalDeaths] = useState("");
   const [totalDeathRate, setTotalDeathRate] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResult, setSearchResults] = useState([]);
 
   const handleChange = event => {
     event.preventDefault();
@@ -85,32 +85,33 @@ function App() {
   const handlePaginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <div className="container">
-      <div className="header">
-        <h1 className="ui header">Covid19 Statistics</h1>
-      </div>
-      <div className="flex-container stats">
-        <Search value={searchTerm} onChange={handleChange} />
-        <div className="country-stats">
-          <p>
-            Total Confirmed: <span>{totalConfirmed}</span>
-          </p>
-          <p>
-            Total Deaths: <span>{totalDeaths}</span>
-          </p>
-          <p>
-            Death Rate: <span>{totalDeathRate} %</span>
-          </p>
-        </div>
-      </div>
-      <div className="stats-table">
+    <div>
+      <div className="container">
+        <Header
+          title="COVID19
+        content"
+          content="If anything kills over 10 million people in the next few decades,
+              it's most likely a highly infectious virus rather than a war."
+          person="Bill Gates"
+          cite="TEDX, 2014"
+        />
+        <Navbar
+          className="search"
+          searchTerm={searchTerm}
+          handleChange={handleChange}
+          totalConfirmed={totalConfirmed}
+          totalDeaths={totalDeaths}
+          totalDeathRate={totalDeathRate}
+        />
         <Table items={currentItem} loading={loading} />
         <Pages
+          className="pagination"
           itemPerPage={itemPerPage}
           totalItems={data.length}
           handlePaginate={handlePaginate}
         />
       </div>
+      <footer>di0nys1s &copy; 2020</footer>
     </div>
   );
 }

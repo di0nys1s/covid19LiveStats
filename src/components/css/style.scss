@@ -1,34 +1,29 @@
+$borderRadius: 5px;
+
+@mixin handleBorder() {
+    border: 1px solid black;
+    border-radius: $borderRadius;
+}
+
+
 body {
     margin: 0;
     padding: 0;
+    background-color: #fff;
+
 
     .container {
         margin: 2rem auto;
 
-        .header {
+        .jumbotron {
             background-color: orange;
             padding: 1rem 2rem;
-            border-radius: 5px;
+            border-radius: $borderRadius;
             text-align: center;
         }
 
-        .stats {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 10rem;
-            margin: 1rem 0;
-            background-color: #eee;
-            border-radius: 5px;
-            padding: .5rem;
-
-            .country-stats {
-                display: flex;
-                margin: 0 2rem;
-                align-items: center;
-                justify-content: space-evenly;
-                flex-grow: 10;
-
-            }
+        .navbar {
+            @include handleBorder();
 
             p {
                 color: black;
@@ -36,19 +31,35 @@ body {
                 vertical-align: middle;
                 margin: .5rem 2rem;
                 font-size: 1.2rem;
-
             }
-
         }
 
         .stats-table {
-            nav { 
-                margin: 2rem 0;
-                display: flex;
-                justify-content: center;
-            }
+            background-color: white;
+            text-align: center;
+            @include handleBorder();
         }
 
+        .pagination {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
 
+        .navbar-collapse {
+            position: relative;
+            left: -1.7rem;
+        }
+    }
+
+    footer {
+        text-align: center;
+        bottom: 0;
+        width: 100%;
+        height: 3rem;
+        font-size: 15px;
+        font-weight: 600;
+        color: black;
     }
 }

@@ -1,43 +1,52 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #fff;
 }
 body .container {
   margin: 2rem auto;
 }
-body .container .header {
+body .container .jumbotron {
   background-color: orange;
   padding: 1rem 2rem;
   border-radius: 5px;
   text-align: center;
 }
-body .container .stats {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 10rem;
-  margin: 1rem 0;
-  background-color: #eee;
+body .container .navbar {
+  border: 1px solid black;
   border-radius: 5px;
-  padding: 0.5rem;
 }
-body .container .stats .country-stats {
-  display: flex;
-  margin: 0 2rem;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-grow: 10;
-}
-body .container .stats p {
+body .container .navbar p {
   color: black;
   font-weight: 500;
   vertical-align: middle;
   margin: 0.5rem 2rem;
   font-size: 1.2rem;
 }
-body .container .stats-table nav {
-  margin: 2rem 0;
+body .container .stats-table {
+  background-color: white;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+body .container .pagination {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+body .container .navbar-collapse {
+  position: relative;
+  left: -1.7rem;
+}
+body footer {
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 3rem;
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
 }
 
 /*# sourceMappingURL=style.css.map */
